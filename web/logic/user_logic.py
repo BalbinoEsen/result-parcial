@@ -26,3 +26,12 @@ class UserLogic(PybaLogic):
             return result[0]
         else:
             return []
+
+    def getRowByUser(self, user):
+        database = self.createDatabaseObj()
+        sql = f"SELECT * FROM world.user where user_name like '{user}';"
+        result = database.executeQuery(sql)
+        if len(result) > 0:
+            return result[0]
+        else:
+            return []

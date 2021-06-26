@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect
 from tools.recaptcha_helper import RecaptchaHelper
+from logic.user_logic import UserLogic
 
 
 class RegisterRoutes:
@@ -12,6 +13,15 @@ class RegisterRoutes:
             elif request.method == "POST":
                 recHelper = RecaptchaHelper(request)
                 if recHelper.validateRecaptcha():
-                    return "register valid post"
+
+                    # verificar que el usuario sea unico
+                    logic = UserLogic()
+                    username = request.form["user"]
+                    result = logic.getRowByUser(username)
+                    if len(result) == 0:
+                        return "register validRecaptcha uniqueUser post"
+                    else:
+                        redirect("register")
+
                 else:
                     redirect("register")
