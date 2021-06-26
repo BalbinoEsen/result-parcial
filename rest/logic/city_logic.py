@@ -34,7 +34,7 @@ class CityLogic(PybaLogic):
             + f"VALUES(0,'{city['Name']}','{city['CountryCode']}','{city['District']}',{city['Population']});"
         )
         rows = database.executeNonQueryRows(sql)
-        return {"rowsAffected": rows}
+        return rows
 
     # patch
     def updateCity(self, id, city):
@@ -46,11 +46,11 @@ class CityLogic(PybaLogic):
             + f"WHERE `ID` = {id};"
         )
         rows = database.executeNonQueryRows(sql)
-        return {"rowsAffected": rows}
+        return rows
 
     # delete
     def deleteCity(self, id):
         database = self.createDatabaseObj()
         sql = f"DELETE FROM `world`.`city` WHERE ID={id};"
         rows = database.executeNonQueryRows(sql)
-        return {"rowsAffected": rows}
+        return rows
