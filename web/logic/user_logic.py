@@ -8,7 +8,7 @@ class UserLogic(PybaLogic):
     def insertUser(self, userName, userEmail, password, salt):
         database = self.createDatabaseObj()
         sql = (
-            "INSERT INTO `testdb`.`user` "
+            "INSERT INTO `user` "
             + "(`id`,`user_name`,`user_email`,`password`,`salt`) "
             + f"VALUES(0,'{userName}','{userEmail}','{password}','{salt}');"
         )
@@ -19,7 +19,7 @@ class UserLogic(PybaLogic):
         database = self.createDatabaseObj()
         sql = (
             "SELECT user_email, password, salt "
-            + f"FROM testdb.user where user_email like '{userEmail}';"
+            + f"FROM user where user_email like '{userEmail}';"
         )
         result = database.executeQuery(sql)
         if len(result) > 0:
@@ -29,7 +29,7 @@ class UserLogic(PybaLogic):
 
     def getRowByUser(self, user):
         database = self.createDatabaseObj()
-        sql = f"SELECT * FROM world.user where user_name like '{user}';"
+        sql = f"SELECT * FROM user where user_name like '{user}';"
         result = database.executeQuery(sql)
         if len(result) > 0:
             return result[0]
