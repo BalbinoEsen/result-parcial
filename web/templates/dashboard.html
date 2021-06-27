@@ -6,14 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </head>
 
 <body>
     <h1>dashboard</h1>
     <p>this is dashboard {{ session["login_user"] }}</p>
 
-    <input type="number" name="cityid" id="cityid" onchange="">
-    <a href="" onclick="">go to city</a>
+    <input type="number" name="cityid" id="cityid" onchange="cityIdOnChange()">
+    <a href="" name="cityLink" id="cityLink" onclick="">go to city</a>
 </body>
 
 </html>
