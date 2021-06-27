@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>city create</title>
+</head>
+
+<body>
+    <h1>city create</h1>
+
+    <p>this is city create</p>
+
+    <form action="{{ url_for('cityModify') }}" method="post">
+        <label for="cityid">id:</label>
+        <input type="number" name="cityid" id="cityid">
+        <br><br>
+        <label for="name">name</label>
+        <input type="text" name="name" id="name">
+        <br><br>
+        <label for="countrycode">countrycode</label>
+        <input type="text" name="countrycode" id="countrycode">
+        <br><br>
+        <label for="district">district</label>
+        <input type="text" name="district" id="district">
+        <br><br>
+        <label for="population">population</label>
+        <input type="number" name="population" id="population">
+        <br><br>
+        <input type="submit" value="Modify">
+    </form>
+</body>
+
+</html>

@@ -35,18 +35,49 @@ class DashboardRoutes:
                 return render_template("cityCreate.html")
             elif request.method == "POST":
                 url = f"http://localhost:23512/city/0"
-                print(url)
                 data = {
                     "Name": request.form["name"],
                     "CountryCode": request.form["countrycode"],
                     "District": request.form["district"],
                     "Population": int(request.form["population"]),
                 }
-                print(data)
                 response = requests.put(url, data=data)
-                print(response)
                 if response.status_code == 200:
                     dataJson = response.json()
                     return f"rowsAffected by create: {dataJson['rowsAffected']}"
+                else:
+                    return redirect("dashboard")
+
+        @app.route("/dashboard/city/modify", methods=["GET", "POST"])
+        def cityModify():
+            if request.method == "GET":
+                return render_template("cityModify.html")
+            elif request.method == "POST":
+                cityId = int(request.form["cityid"])
+                url = f"http://localhost:23512/city/{cityId}"
+                data = {
+                    "Name": request.form["name"],
+                    "CountryCode": request.form["countrycode"],
+                    "District": request.form["district"],
+                    "Population": int(request.form["population"]),
+                }
+                response = requests.patch(url, data=data)
+                if response.status_code == 200:
+                    dataJson = response.json()
+                    return f"rowsAffected by modify: {dataJson['rowsAffected']}"
+                else:
+                    return redirect("dashboard")
+
+        @app.route("/dashboard/city/delete", methods=["GET", "POST"])
+        def cityDelete():
+            if request.method == "GET":
+                return render_template("cityDelete.html")
+            elif request.method == "POST":
+                cityId = int(request.form["cityid"])
+                url = f"http://localhost:23512/city/{cityId}"
+                response = requests.delete(url)
+                if response.status_code == 200:
+                    dataJson = response.json()
+                    return f"rowsAffected by delete: {dataJson['rowsAffected']}"
                 else:
                     return redirect("dashboard")

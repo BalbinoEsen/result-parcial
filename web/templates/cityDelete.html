@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>city create</title>
+</head>
+
+<body>
+    <h1>city create</h1>
+
+    <p>this is city create</p>
+
+    <form action="{{ url_for('cityDelete') }}" method="post">
+        <label for="cityid">id:</label>
+        <input type="number" name="cityid" id="cityid">
+        <br><br>
+        <input type="submit" value="Delete">
+    </form>
+</body>
+
+</html>
