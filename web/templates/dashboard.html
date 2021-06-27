@@ -21,13 +21,13 @@
     <a href="" name="countryLink" id="countryLink" onclick="">go to cities</a>
     <br><br>
 
-    <a href="/dashboard/city/create" name="citycreate" id="citycreate">go to city create</a>
+    <a href="{{ url_for('cityCreate') }}" name="citycreate" id="citycreate">go to city create</a>
     <br><br>
 
-    <a href="/dashboard/city/modify" name="citymodify" id="citymodify">go to city modify</a>
+    <a href="{{ url_for('cityModify') }}" name="citymodify" id="citymodify">go to city modify</a>
     <br><br>
 
-    <a href="/dashboard/city/delete" name="citydelete" id="citydelete">go to city delete</a>
+    <a href="{{ url_for('cityDelete') }}" name="citydelete" id="citydelete">go to city delete</a>
     <br><br>
 </body>
 
