@@ -44,7 +44,12 @@ class DashboardRoutes:
                 response = requests.put(url, data=data)
                 if response.status_code == 200:
                     dataJson = response.json()
-                    return f"rowsAffected by create: {dataJson['rowsAffected']}"
+                    # return f"rowsAffected by create: {dataJson['rowsAffected']}"
+                    return render_template(
+                        "nonQuery.html",
+                        message=dataJson,
+                        type="create",
+                    )
                 else:
                     return redirect("dashboard")
 
@@ -64,7 +69,12 @@ class DashboardRoutes:
                 response = requests.patch(url, data=data)
                 if response.status_code == 200:
                     dataJson = response.json()
-                    return f"rowsAffected by modify: {dataJson['rowsAffected']}"
+                    # return f"rowsAffected by modify: {dataJson['rowsAffected']}"
+                    return render_template(
+                        "nonQuery.html",
+                        message=dataJson,
+                        type="modify",
+                    )
                 else:
                     return redirect("dashboard")
 
@@ -78,6 +88,11 @@ class DashboardRoutes:
                 response = requests.delete(url)
                 if response.status_code == 200:
                     dataJson = response.json()
-                    return f"rowsAffected by delete: {dataJson['rowsAffected']}"
+                    # return f"rowsAffected by delete: {dataJson['rowsAffected']}"
+                    return render_template(
+                        "nonQuery.html",
+                        message=dataJson,
+                        type="delete",
+                    )
                 else:
                     return redirect("dashboard")
